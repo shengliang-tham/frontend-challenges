@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Order summary card</title>
+  </head>
+  <body>
+    <div class="background">
+      <div class="container">
+        <div class="card">
+          <div class="card-header"></div>
+          <div class="card-title text-center">
+            <p>Order Summary</p>
+          </div>
+          <div class="card-body text-center">
+            <p>
+              You can now listen to millions of songs, audiobooks, and podcasts
+              on any device anywhere you like!
+            </p>
+          </div>
+          <div class="card-plan">
+            <div><img src="/images/icon-music.svg" /></div>
+            <div>
+              <p class="title">Annual Plan</p>
+              <p class="price">$59.99/year</p>
+            </div>
+            <div class="button"><a href="#">Change</a></div>
+          </div>
+          <div class="payment-button">
+            <p>Proceed to Payment</p>
+          </div>
+          <div class="cancel text-center">Cancel Order</div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <style>
+    * {
+      margin: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+    .background {
+      height: 100%;
+      background: url("/images/pattern-background-mobile.svg") no-repeat,
+        hsl(225, 100%, 94%);
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+    .card {
+      height: 80%;
+      width: 90%;
+      background-color: white;
+      border-radius: 25px;
+      box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.072);
+    }
+
+    .card-header {
+      height: 30%;
+      border-radius: 25px 25px 0px 0px;
+      background-color: hsl(245, 75%, 52%);
+      background: url("/images/illustration-hero.svg");
+      background-size: 100% 100%;
+    }
+
+    p {
+      font-family: "Red Hat Display", sans-serif;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .card-title {
+      margin-top: 25px;
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .card-body {
+      margin-top: 20px;
+      font-weight: 500;
+      font-size: 16px;
+      padding: 0px 30px;
+      color: hsl(224, 23%, 55%);
+    }
+
+    .card-plan {
+      margin-top: 20px;
+      margin-left: 20px;
+      margin-right: 20px;
+      border-radius: 5px;
+      background-color: hsl(225, 100%, 98%);
+      padding: 10px 20px;
+      display: grid;
+      grid-template-columns: 20% 40% auto;
+      grid-column-gap: 20px;
+      justify-content: center;
+      align-items: center;
+      height: 10%;
+    }
+
+    .card-plan .title {
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    .card-plan .price {
+      font-weight: 500;
+      font-size: 14px;
+      color: hsl(224, 23%, 55%);
+    }
+
+    .card-plan .button {
+      color: hsl(245, 75%, 52%);
+      font-weight: 700;
+    }
+
+    .payment-button {
+      margin-top: 20px;
+      margin-left: 20px;
+      margin-right: 20px;
+      border-radius: 10px;
+      height: 40px;
+      background-color: hsl(245, 75%, 52%);
+      box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.048), 0 12.5px 10px rgba(0, 0, 0, 0.06),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.072);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .payment-button p {
+      color: white;
+      font-size: 14px;
+    }
+
+    .cancel {
+      margin-top: 20px;
+      color: hsl(224, 23%, 55%);
+      font-weight: 900;
+    }
+
+    @media screen and (min-width: 1440px) {
+      .background {
+        /* object-fit: fill; */
+        /* background: url("/images/pattern-background-mobile.svg") cover,
+          hsl(225, 100%, 94%); */
+        background-size: 100% 40%;
+      }
+      .card {
+        height: 80%;
+        width: 25%;
+      }
+
+      .card-plan {
+        margin-left: 40px;
+        margin-right: 40px;
+      }
+
+      .payment-button {
+        margin-left: 40px;
+        margin-right: 40px;
+      }
+    }
+
+    .testing {
+      color: hsl(225, 100%, 94%);
+      color: hsl(245, 75%, 52%);
+      color: hsl(225, 100%, 98%);
+      color: hsl(224, 23%, 55%);
+      color: hsl(223, 47%, 23%);
+    }
+  </style>
+</html>
