@@ -12,7 +12,7 @@ Users should be able to:
 
 - See hover states for interactive elements
 
-- Live Site URL: [Add live site URL here](https://kind-carson-867f60.netlify.app/)
+- Live Site URL: [View it here](https://kind-carson-867f60.netlify.app/)
 
 ## My process
 
