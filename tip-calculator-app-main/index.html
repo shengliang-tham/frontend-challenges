@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Frontend Mentor | Tip calculator app</title>
+  </head>
+  <body>
+    <div class="title text-center">
+      <p>SPLI</p>
+      <p>TTER</p>
+    </div>
+    <div class="container">
+      <div class="outer-card">
+        <div class="inner-card">
+          <div class="left-card">
+            <div class="input-container">
+              <div class="label">
+                <p>Bill</p>
+              </div>
+              <div class="placeholder">
+                <p class="unit"><img src="./images/icon-dollar.svg" /></p>
+                <input
+                  input="text"
+                  id="bill"
+                  placeholder="0.00"
+                  class="value"
+                />
+              </div>
+            </div>
+            <div class="input-container">
+              <div class="label">
+                <p>Select Tip %</p>
+              </div>
+              <div class="tip-placeholder">
+                <div class="background text-center" id="5%"><p>5%</p></div>
+                <div class="background text-center" id="10%"><p>10%</p></div>
+                <div class="background text-center" id="15%">
+                  <p>15%</p>
+                </div>
+                <div class="background text-center" id="25%"><p>25%</p></div>
+                <div class="background text-center" id="50%"><p>50%</p></div>
+                <div class="background text-center custom-percentage">
+                  <input input="text" id="tip" placeholder="Custom" />
+                </div>
+              </div>
+            </div>
+            <div class="input-container">
+              <div class="label">
+                <p>Number of People</p>
+              </div>
+              <div class="placeholder">
+                <p class="unit"><img src="./images/icon-person.svg" /></p>
+                <input type="text" class="value" placeholder="0" id="people" />
+              </div>
+            </div>
+          </div>
+          <div class="right-card">
+            <div class="input-placeholder">
+              <div class="left-side">
+                <div class="label">
+                  <p>Tip Amount</p>
+                </div>
+                <div class="unit">
+                  <p>/ person</p>
+                </div>
+              </div>
+              <div class="right-side">
+                <div class="amount">
+                  <p id="tip-amount">$0</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="input-placeholder">
+              <div class="left-side">
+                <div class="label">
+                  <p>Total</p>
+                </div>
+                <div class="unit">
+                  <p>/ person</p>
+                </div>
+              </div>
+              <div class="right-side">
+                <div class="amount">
+                  <p id="total">$0</p>
+                </div>
+              </div>
+            </div>
+            <div class="button text-center"><p id="reset">RESET</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <style>
+    * {
+      margin: 0;
+    }
+
+    html {
+      height: 100%;
+      background-color: hsl(185, 41%, 84%);
+    }
+
+    body {
+      overflow-y: hidden;
+    }
+
+    p {
+      font-family: "Space Mono", monospace;
+    }
+
+    input {
+      direction: rtl;
+      outline: none;
+      border: 0;
+      background-color: transparent;
+      caret-color: transparent;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .title {
+      margin-top: 5%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .title p {
+      font-weight: 300;
+      color: hsl(183, 32%, 39%);
+      letter-spacing: 5px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 600px;
+      margin-top: 2%;
+    }
+
+    .outer-card {
+      width: 100%;
+      background-color: hsl(0, 0%, 100%);
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .input-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .input-container .label {
+      color: hsl(184, 14%, 56%);
+    }
+
+    .placeholder {
+      background-color: hsl(189, 41%, 97%);
+      padding: 10px;
+      display: flex;
+    }
+
+    .placeholder .unit {
+      color: hsl(184, 14%, 56%);
+    }
+
+    .placeholder .value {
+      margin-left: auto;
+      color: hsl(183, 100%, 15%);
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .input-container:nth-child(2) {
+      margin-top: 10px;
+    }
+
+    .tip-placeholder {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, auto);
+      grid-gap: 15px;
+    }
+
+    .tip-placeholder .background {
+      background-color: hsl(183, 100%, 15%);
+      border-radius: 5px;
+      padding: 5px 10px;
+    }
+
+    .tip-placeholder .background p {
+      color: hsl(0, 0%, 100%);
+      font-size: 16px;
+    }
+
+    .tip-placeholder .tip-active,
+    .tip-placeholder .tip-active p {
+      background-color: hsl(172, 67%, 45%);
+      color: hsl(183, 100%, 15%);
+    }
+
+    .tip-placeholder .custom-percentage {
+      background-color: hsl(189, 41%, 97%);
+      font-size: 16px;
+      display: flex;
+    }
+
+    .tip-placeholder .custom-percentage input {
+      text-align: center;
+      width: 100%;
+      font-size: 18px;
+      color: hsl(183, 32%, 39%);
+      font-family: "Space Mono", monospace;
+    }
+
+    .tip-placeholder .custom-percentage input::-webkit-input-placeholder {
+      color: hsl(183, 32%, 39%);
+    }
+
+    .input-container:nth-child(3) {
+      margin-top: 10px;
+    }
+
+    .right-card {
+      background-color: hsl(183, 100%, 15%);
+      border-radius: 15px;
+      height: 140px;
+      padding: 20px 15px;
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+    }
+
+    .right-card .input-placeholder {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5%;
+    }
+
+    .right-card .input-placeholder .left-side {
+      flex-grow: 1;
+    }
+
+    .right-card .input-placeholder .label {
+      color: hsl(0, 0%, 100%);
+      font-size: 14px;
+    }
+
+    .right-card .input-placeholder .unit {
+      color: hsl(184, 14%, 56%);
+      font-size: 12px;
+    }
+
+    .right-card .input-placeholder .amount {
+      color: hsl(172, 67%, 45%);
+      font-size: 24px;
+    }
+
+    .right-card .button {
+      margin-top: auto;
+      padding: 5px 5px;
+      background-color: hsl(172, 67%, 45%);
+    }
+
+    #reset {
+      color: hsl(183, 100%, 15%);
+      font-weight: 700;
+    }
+
+    .colors {
+      color: hsl(172, 67%, 45%);
+      color: hsl(183, 100%, 15%);
+      color: hsl(186, 14%, 43%);
+      color: hsl(184, 14%, 56%);
+      color: hsl(185, 41%, 84%);
+      color: hsl(189, 41%, 97%);
+      color: hsl(0, 0%, 100%);
+    }
+
+    @media screen and (min-width: 1440px) {
+      .container {
+        height: 400px;
+      }
+      .outer-card {
+        display: flex;
+        width: 50%;
+        padding: 30px;
+      }
+
+      .inner-card {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        justify-content: center;
+        grid-gap: 40px;
+      }
+
+      .left-card {
+        width: 100%;
+      }
+
+      .right-card {
+        width: 80%;
+        padding: 40px 40px;
+        height: auto;
+        margin-top: 0px;
+      }
+
+      .tip-placeholder {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, auto);
+        grid-gap: 15px;
+      }
+
+      .tip-placeholder .background p {
+        font-size: 20px;
+      }
+
+      .input-container:nth-child(2) {
+        margin-top: 30px;
+      }
+
+      .input-container:nth-child(3) {
+        margin-top: 30px;
+      }
+
+      .right-card .input-placeholder .unit {
+        font-size: 14px;
+      }
+
+      .right-card .input-placeholder .amount {
+        font-size: 36px;
+      }
+    }
+  </style>
+
+  <script type="text/javascript">
+    function restrictNumber(e) {
+      var newValue = this.value.replace(new RegExp(/[^\d]/, "ig"), "");
+      this.value = newValue;
+    }
+
+    function restrictFloatingNumber(e) {
+      var newValue = this.value.replace(new RegExp(/[^\d.]/, "ig"), "");
+      this.value = newValue;
+      calculate();
+    }
+
+    function percentageOnClick(e) {
+      e.stopPropagation();
+      activeTip = e.target.innerHTML;
+      resetActivePercentage();
+      e.target.parentElement.classList.add("tip-active");
+    }
+
+    function resetActivePercentage() {
+      tips.forEach((tip) => {
+        var div = document.getElementById(tip).classList.remove("tip-active");
+      });
+    }
+
+    function tipOnChange(e) {
+      resetActivePercentage();
+      activeTip = e.target.value;
+      calculate();
+    }
+
+    function peopleOnChange(e) {
+      calculate();
+    }
+
+    function calculate() {
+      calculateTip();
+      calculateTotal();
+    }
+
+    function calculateTip() {
+      document.getElementById("tip-amount").innerHTML =
+        "$" +
+        (
+          (Number(bill.value) * (Number(activeTip.replace("%", "")) / 100)) /
+          Number(people.value)
+        ).toFixed(2);
+    }
+
+    function calculateTotal() {
+      document.getElementById("total").innerHTML =
+        "$" +
+        (
+          (Number(bill.value) +
+            (Number(bill.value) * Number(activeTip.replace("%", ""))) / 100) /
+          Number(people.value)
+        ).toFixed(2);
+    }
+
+    function onReset() {
+      bill.value = "";
+      activeTip = "";
+      resetActivePercentage();
+      people.value = "";
+
+      document.getElementById("tip").value = "";
+      document.getElementById("total").innerHTML = "$0.00";
+      document.getElementById("tip-amount").innerHTML = "$0.00";
+    }
+
+    var bill = document.querySelector("#bill");
+    bill.addEventListener("input", restrictFloatingNumber);
+
+    var people = document.querySelector("#people");
+    people.addEventListener("input", restrictNumber);
+
+    var tips = ["5%", "10%", "15%", "25%", "50%"];
+    tips.forEach((tip) => {
+      var div = document.getElementById(tip);
+      div.addEventListener("click", percentageOnClick);
+    });
+
+    var activeTip = "";
+    document.getElementById("tip").addEventListener("input", tipOnChange);
+    document.getElementById("people").addEventListener("input", peopleOnChange);
+    document.getElementById("reset").addEventListener("click", onReset);
+  </script>
+</html>
